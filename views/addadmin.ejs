@@ -1,0 +1,58 @@
+<%- include('./_header'); %>
+<div class="page-header" >
+    <ul class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <!--<li><a href="/admin/addadmin">Admin</a></li>-->
+      </ul>
+    <h3 class="mt-0 p-3 pt-0" > Add New Admin</h3>
+    </div>
+<div class="row">
+<div class="card">
+    <div class="card-body">
+    <form action="/register" method="post" enctype="multipart/form-data">
+        <div class="row"> <div class="col-md-6">
+        <div class="input-group">
+            <label for="firstname" class="form-label">First Name:</label>
+            <input class="form-control" type="text" name="firstname" id="">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label for="lastname" class="form-label">Last Name:</label>
+            <input class="form-control" type="text" name="lastname" id="">
+        </div>
+    </div></div>
+
+    <div class="row"> <div class="col-md-6">
+        <div class="input-group">
+            <label for="email" class="form-label">Email:</label>
+            <input class="form-control" type="email" name="email" id="">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label for="password" class="form-label">Password:</label>
+            <input class="form-control" type="password" name="password" id="">
+        </div>
+    </div></div>
+    <div class="input-group">
+        <label for="image" class="form-label">Image:</label>
+        <input class="form-control" type="file" name="file" id="">
+    </div>
+    <button type="submit" class="btn btn-primary"> Submit</button>
+    </form>
+</div>
+</div>
+</div>
+
+
+<%- include('./_footer'); %>
+
+<style>
+    .input-group {
+        margin-bottom: 10px;
+    }
+    label {
+        margin-right: 3px;
+    }
+</style>

@@ -1,0 +1,53 @@
+<%- include('./_header'); %>
+<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+<div class="page-header" >
+    <ul class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/faqs">Faqs</a></li>
+        <li>Add Faqs</li>
+      </ul>
+    <h3 class="mt-0 p-3 pt-0" > Add a frequently asked questions</h3>
+    </div>
+
+<div class="row">
+<form action="/addfaqs" Method="POST">
+    <div class="input-group mb-3">
+        <label class="form-label me-2" for="category">Category:</label>
+        <select class="form-select" name="category" aria-label="Default select example" width="200">
+            <option selected>Open this select menu</option>
+            <option value="pricing">Pricing</option>
+            <option value="session">Session</option>
+            <option value="curriculum and level">Curriculum and level</option>
+          </select>
+    </div>
+    <div class="input-group mb-3">
+        <label class="form-label me-2" for="title">Title:</label>
+        <input class="form-control" type="text" name="title" id="">
+    </div>
+    <div class="input-group mb-3">
+        <label  class="form-label me-2" for="content">Content:</label>
+        <textarea class="form-control ck-content" name="content" id="editor"></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">save</button>
+</form>
+</div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+</script>
+
+<style>
+    label {
+        color: #fafafa;
+
+    }
+
+</style>
+
+
+<%- include('./_footer'); %>

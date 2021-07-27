@@ -1,0 +1,27 @@
+<%- include('./_header'); %>
+<div class="page-header" >
+<ul class="breadcrumb">
+    <li><a href="/">Dashboard</a></li>
+        <li><a href="/faqs">Faqs</a></li>
+    <li>All Faqs</li>
+  </ul>
+<h3 class="mt-0 p-3 pt-0" >Frequently asked questions</h3>
+</div>
+
+<div class="row">
+<% faqs.forEach(function(faq){ %>
+<div class="card bg-light mb-2">
+    <div class="card-body">
+    <h5 class="card-title"><%= faq.title; %></h5>
+    <h6 class="card-subtitle text-muted"><%= faq.category; %></h6>
+    <p class="card-text"><%- faq.content; %></p>
+        <a href="/faqedit/<%= faq.id; %>" class="btn btn-info">Edit</a>
+        <form action="/faqs/<%= faq.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">DELETE</button></form>
+            </form>
+    </div>
+</div>
+
+<% }); %>
+</div>
+<%- include('./_footer'); %>
