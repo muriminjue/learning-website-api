@@ -67,15 +67,34 @@ router.get("/parents",  admin.pass, async (req,res) => {
     res.render("parents", {parents: parents})
 })
 
+router.get("/reviews", admin.pass, async (req,res) => {
+    var reviews = await db.Review.findAll({order: [['createdAt', 'DESC']]})
+    res.render("reviews", {reviews: reviews})
+})
+
+router.get("/addreviews", admin.pass, async (req,res) => {
+    res.render("addreviews")
+})
+
+router.post("/addreviews", admin.pass, async (req,res) => {
+    await db.Review.create(req.body)
+    res.redirect("reviews")
+})
+
+router.delete('/reviews/:id', admin.pass, async (req, res) => {
+    await db.Review.destroy({ where: {id: req.params.id}})
+    res.redirect("/reviews")
+})
+
 router.get("/login",admin.forward, (req, res)=> {
     res.render("login")
 });
-router.get("/addadmin", admin.pass,  (req, res)=> {
+router.get("/addadmin",   (req, res)=> {
     res.render("addadmin")
 })
 
 
-router.post("/register",  admin.pass,  upload.single("file"), async(req,res) => {
+router.post("/register",   upload.single("file"), async(req,res) => {
     const {
         file,
         body: { name },
@@ -104,7 +123,7 @@ router.post("/register",  admin.pass,  upload.single("file"), async(req,res) => 
         return res.status(400).json({ msg: 'user exists' });
       } 
     await db.Admin.create(newadmin);
-        res.status(200).redirect("/admin")
+        res.status(200).redirect("/")
     } else {
         res.status(400).json({msg:"invalid image"});
         

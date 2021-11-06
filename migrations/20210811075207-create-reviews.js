@@ -1,25 +1,13 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('parents', {
+    await queryInterface.createTable('reviews', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
-      firstname: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      lastname: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      class: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      subjects: {
+      fullname: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -27,22 +15,22 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      email: {
+      school: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      contact: {
+      rating: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.FLOAT
       },
-       createdAt: {
+      comment: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      contact_name: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },     
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -50,6 +38,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('parents');
+    await queryInterface.dropTable('reviews');
   }
 };

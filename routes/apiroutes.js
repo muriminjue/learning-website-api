@@ -7,6 +7,7 @@ const cors = require("cors");
 const faqs = require("../controllers/faqs");
 const tutor = require("../controllers/tutors");
 const parent = require("../controllers/parents");
+const reviews = require("../controllers/reviews")
 
 router.use(cors());
 //FAQs 
@@ -19,6 +20,7 @@ router.post("/tutors", tutor.add, tutor.email)
 //parents
 router.post("/parents", parent.add)
 
-
+// reviews
+router.get("/reviews", reviews.get)
 
 module.exports = router;

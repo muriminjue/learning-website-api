@@ -1,0 +1,29 @@
+<%- include('./_header'); %>
+<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+<div class="page-header" >
+    <ul class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/faqs">Reviews</a></li>
+        <li>All Reviews</li>
+      </ul>
+    <h3 class="mt-0 p-3 pt-0" > All Reviews</h3>
+    </div>
+
+   <div class="row">
+<% reviews.forEach(function(item){ %>
+<div class="card bg-light mb-2">
+    <div class="card-body">
+    <h5 class="card-title"><%= item.fullname; %></h5>
+    <p><%= item.level; %> <span style="color:brown">Rating: <%= item.rating; %></span></p>
+    <h6 class="card-subtitle text-muted"><%= item.school; %></h6>
+    <p class="card-text"><%- item.comment; %></p>
+     
+        <form action="/reviews/<%= item.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">DELETE</button></form>
+            </form>
+    </div>
+</div>
+
+<% }); %>
+</div>
+<%- include('./_footer'); %>

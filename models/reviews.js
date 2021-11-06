@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class parents extends Model {
+  class reviews extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,51 +13,33 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  parents.init({
+  reviews.init({
     id: {
       type: DataTypes.UUIDV4,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
-    firstname:{ 
+    fullname: {
       allowNull: false,
-      type:  DataTypes.STRING
-    },
-    lastname: { 
-      allowNull: false,
-      type:  DataTypes.STRING
-    },
+       type:DataTypes.STRING,},
     level: {
       allowNull: false,
-      type:  DataTypes.STRING
-    },
-    class: {
+       type:DataTypes.STRING,},
+    school: {
       allowNull: false,
-      type:  DataTypes.STRING
-    },
-    subjects: {
+       type:DataTypes.STRING,},
+    rating: {
       allowNull: false,
-      type:  DataTypes.STRING
-    },
-    contact: { 
+       type:DataTypes.FLOAT,},
+    comment: {
       allowNull: false,
-      type:  DataTypes.STRING
-    },
-    email: {   
-        allowNull: false,
-        unique: true,
-        type: DataTypes.STRING
-    },
-   contact_name:{
-      allowNull: false,
-      type:  DataTypes.STRING
-    },
+       type:DataTypes.TEXT
   },
- {
+}, {
     sequelize,
-    tableName: "parents",
-    modelName: 'Parent',
+    tableName: "reviews",
+    modelName: 'Review',
   });
-  return parents;
+  return reviews;
 };
